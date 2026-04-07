@@ -1,40 +1,4 @@
-#!/usr/bin/env python3
-"""Writing Ideas web app — scores AI-Informer digests and presents topic recommendations."""
-
-from __future__ import annotations
-
-import argparse
-import json
-from datetime import datetime, timezone
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from pathlib import Path
-from urllib.parse import urlparse
-
-from scorer import generate_ideas, find_latest_digest, score_digest
-
-DATA_DIR = Path(__file__).resolve().parent / "data"
-
-
-def utcnow() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def load_ideas() -> dict:
-    """Load cached ideas or regenerate."""
-    cache = DATA_DIR / "ideas.json"
-    if cache.exists():
-        with open(cache, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {"generated_at": "", "digest_source": "", "ideas": []}
-
-
-def refresh_ideas() -> dict:
-    """Regenerate ideas from latest digest."""
-    ideas = generate_ideas(DATA_DIR / "ideas.json")
-    return load_ideas()
-
-
-HTML = """<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
@@ -63,12 +27,6 @@ HTML = """<!doctype html>
     h1 { font-size: 1.8rem; }
     .kicker { text-transform: uppercase; letter-spacing: .09em; color: var(--muted); font-size: 12px; font-weight: 700; margin-bottom: 2px; }
     .meta { color: var(--muted); font-size: 12px; }
-    button {
-      border: none; border-radius: 10px; padding: 9px 16px;
-      font: inherit; font-size: 14px; font-weight: 700;
-      color: #fff; background: var(--accent); cursor: pointer;
-    }
-    button:hover { filter: brightness(.93); }
     .idea-card {
       background: var(--card); border: 1px solid var(--line);
       border-radius: 16px; padding: 20px; margin-bottom: 14px;
@@ -89,9 +47,7 @@ HTML = """<!doctype html>
     .badge.weak { background: var(--weak-bg); color: var(--weak-fg); }
     .score-total { font-size: 1.6rem; font-weight: 800; color: var(--accent); margin-right: 6px; }
     .score-max { font-size: .85rem; color: var(--muted); }
-    .score-bar {
-      display: flex; gap: 6px; margin: 10px 0; flex-wrap: wrap;
-    }
+    .score-bar { display: flex; gap: 6px; margin: 10px 0; flex-wrap: wrap; }
     .dim {
       flex: 1; min-width: 100px;
       background: #f4f4f2; border-radius: 10px; padding: 8px 10px;
@@ -117,6 +73,11 @@ HTML = """<!doctype html>
       text-align: center; padding: 60px 20px;
       color: var(--muted); font-size: 15px;
     }
+    .section-label {
+      font-size: 14px; font-weight: 700; color: var(--accent);
+      margin: 20px 0 10px; padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+    }
     @media (max-width: 600px) {
       .score-bar { flex-direction: column; }
       .dim { min-width: unset; }
@@ -131,8 +92,7 @@ HTML = """<!doctype html>
         <h1>博客选题推荐</h1>
       </div>
       <div style="text-align:right">
-        <button onclick="refresh()">刷新评估</button>
-        <div id="genMeta" class="meta" style="margin-top:6px"></div>
+        <div id="genMeta" class="meta"></div>
       </div>
     </header>
     <div id="ideas"></div>
@@ -175,80 +135,41 @@ function renderIdea(idea) {
 }
 
 async function loadIdeas() {
-  const resp = await fetch('/api/ideas');
-  const data = await resp.json();
   const root = document.getElementById('ideas');
   const meta = document.getElementById('genMeta');
-  if (!data.ideas || data.ideas.length === 0) {
-    root.innerHTML = '<div class="empty">暂无选题推荐，点击"刷新评估"获取最新信息</div>';
-    meta.textContent = '';
-    return;
-  }
-  root.innerHTML = data.ideas.map(renderIdea).join('');
-  meta.textContent = `数据来源: ${data.digest_source || ''} | 生成时间: ${data.generated_at || ''}`;
-}
+  try {
+    const resp = await fetch('data/ideas.json');
+    if (!resp.ok) throw new Error('No data');
+    const data = await resp.json();
+    if (!data.ideas || data.ideas.length === 0) {
+      root.innerHTML = '<div class="empty">暂无选题推荐</div>';
+      return;
+    }
+    const strong = data.ideas.filter(i => i.recommendation === 'strong');
+    const moderate = data.ideas.filter(i => i.recommendation === 'moderate');
+    const weak = data.ideas.filter(i => i.recommendation === 'weak');
 
-async function refresh() {
-  document.getElementById('ideas').innerHTML = '<div class="empty">正在评估...</div>';
-  await fetch('/api/refresh', { method: 'POST' });
-  await loadIdeas();
+    let html = '';
+    if (strong.length) {
+      html += '<div class="section-label">强烈推荐</div>';
+      html += strong.map(renderIdea).join('');
+    }
+    if (moderate.length) {
+      html += '<div class="section-label">值得考虑</div>';
+      html += moderate.map(renderIdea).join('');
+    }
+    if (weak.length) {
+      html += '<div class="section-label">优先级低</div>';
+      html += weak.map(renderIdea).join('');
+    }
+    root.innerHTML = html;
+    meta.textContent = `更新时间: ${data.generated_at || '未知'}`;
+  } catch (e) {
+    root.innerHTML = '<div class="empty">加载失败，请稍后重试</div>';
+  }
 }
 
 loadIdeas();
 </script>
 </body>
 </html>
-"""
-
-
-class Handler(BaseHTTPRequestHandler):
-    def log_message(self, fmt, *args):
-        return
-
-    def _json(self, payload, code=200):
-        body = json.dumps(payload, ensure_ascii=False).encode()
-        self.send_response(code)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def _html(self, body):
-        data = body.encode()
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
-        self.send_header("Content-Length", str(len(data)))
-        self.end_headers()
-        self.wfile.write(data)
-
-    def do_GET(self):
-        parsed = urlparse(self.path)
-        if parsed.path == "/":
-            self._html(HTML)
-        elif parsed.path == "/api/ideas":
-            self._json(load_ideas())
-        else:
-            self._json({"error": "not found"}, 404)
-
-    def do_POST(self):
-        parsed = urlparse(self.path)
-        if parsed.path == "/api/refresh":
-            data = refresh_ideas()
-            self._json(data)
-        else:
-            self._json({"error": "not found"}, 404)
-
-
-def main():
-    parser = argparse.ArgumentParser(description="Writing Ideas web app")
-    parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--port", type=int, default=8081)
-    args = parser.parse_args()
-
-    server = ThreadingHTTPServer((args.host, args.port), Handler)
-    print(f"[{utcnow()}] Writing Ideas app at http://{args.host}:{args.port}", flush=True)
-    server.serve_forever()
-
-
-if __name__ == "__main__":
-    main()
