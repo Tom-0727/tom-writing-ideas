@@ -1,53 +1,85 @@
 {
-  "generated_at": "2026-04-07T03:34:51Z",
-  "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T033216Z",
+  "generated_at": "2026-04-07T04:37:20Z",
+  "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T041603Z",
   "ideas": [
     {
-      "title": "Anthropic tells OpenClaw users to pay up",
-      "url": "https://www.therundown.ai/p/anthropic-tells-openclaw-users-to-pay-up",
-      "source": "rundown-ai",
+      "title": "Issue: Claude Code is unusable for complex engineering tasks with Feb updates",
+      "url": "https://github.com/anthropics/claude-code/issues/42796",
+      "source": "hacker-news",
       "scores": {
-        "audience_reach": 4,
+        "audience_reach": 3,
         "distribution_potential": 5,
         "author_differentiation": 5,
-        "timeliness": 5,
-        "series_potential": 3,
-        "total": 22
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 18
       },
-      "content_line": "行业洞察",
-      "suggested_angle": "作为OpenClaw的真实用户，从亲历者视角分析这次定价变化对独立开发者意味着什么，延伸到AI基础设施的商业模式演变",
-      "recommendation": "strong"
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate"
     },
     {
-      "title": "AI just made the billion-dollar solo founder real",
-      "url": "https://www.therundown.ai/p/ai-just-made-the-billion-dollar-solo-founder-real",
+      "title": "Show HN: Hippo, biologically inspired memory for AI agents",
+      "url": "https://github.com/kitfunso/hippo-memory",
+      "source": "hacker-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 3,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 16
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate"
+    },
+    {
+      "title": "OpenAI’s new $122B funding, 'superapp'",
+      "url": "https://www.therundown.ai/p/openai-new-122b-funding-superapp",
       "source": "rundown-ai",
       "scores": {
-        "audience_reach": 5,
-        "distribution_potential": 5,
-        "author_differentiation": 3,
+        "audience_reach": 2,
+        "distribution_potential": 4,
+        "author_differentiation": 4,
         "timeliness": 3,
-        "series_potential": 4,
-        "total": 20
+        "series_potential": 2,
+        "total": 15
       },
       "content_line": "行业洞察",
-      "suggested_angle": "从'One Man, Many Agents'的实践出发，用自己构建AI员工体系的经验，讨论AI如何改变个人的能力边界",
-      "recommendation": "strong"
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "moderate"
     },
     {
-      "title": "google-ai-edge/gallery",
-      "url": "https://github.com/google-ai-edge/gallery",
-      "source": "github-trending",
+      "title": "KREV",
+      "url": "https://www.producthunt.com/products/krev",
+      "source": "product-hunt",
       "scores": {
         "audience_reach": 2,
-        "distribution_potential": 2,
-        "author_differentiation": 1,
-        "timeliness": 5,
+        "distribution_potential": 3,
+        "author_differentiation": 2,
+        "timeliness": 3,
         "series_potential": 2,
         "total": 12
       },
       "content_line": "技术深度",
-      "suggested_angle": "代码级拆解 + 对自建系统的参考价值分析",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak"
+    },
+    {
+      "title": "Predflow AI",
+      "url": "https://www.producthunt.com/products/predflow-2",
+      "source": "product-hunt",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 3,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 12
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak"
     }
   ]

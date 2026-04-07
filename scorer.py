@@ -140,7 +140,8 @@ def _suggest_angle(text: str, author_score: int) -> str:
 
 def _classify_content_line(text: str) -> str:
     if any(kw in text for kw in ["pricing", "business", "founder", "startup", "trend", "market",
-                                  "pay up", "billion", "solo", "industry"]):
+                                  "pay up", "billion", "solo", "industry", "funding", "valuation",
+                                  "acquisition", "ipo", "revenue", "superapp"]):
         return "行业洞察"
     if any(kw in text for kw in ["tool", "workflow", "automation", "how to", "tutorial"]):
         return "实用工具"
