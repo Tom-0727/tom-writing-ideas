@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Writing Platform — Tom AI Lab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f3ee; --card: rgba(255,255,255,0.92); --ink: #1f2831;
+      --muted: #6b7580; --line: rgba(31,40,49,0.12); --accent: #2f7a5f;
+      --strong-bg: #d5f2e5; --strong-fg: #186246;
+      --moderate-bg: #fef3cd; --moderate-fg: #856404;
+      --weak-bg: #f0f0f0; --weak-fg: #6c757d;
+      --draft-bg: #e3f2fd; --draft-fg: #1565c0;
+      --review-bg: #fff3e0; --review-fg: #e65100;
+      --approved-bg: #e8f5e9; --approved-fg: #2e7d32;
+      --published-bg: #f3e5f5; --published-fg: #7b1fa2;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      min-height: 100vh; color: var(--ink);
+      font-family: "Space Grotesk","Segoe UI",sans-serif;
+      background: linear-gradient(140deg, var(--bg), #eaf0ec);
+    }
+    .app { max-width: 960px; margin: 0 auto; padding: 28px 16px 60px; }
+
+    /* ── Tabs ── */
+    .tab-bar {
+      display: flex; gap: 0; margin-bottom: 24px;
+      border-bottom: 2px solid var(--line);
+    }
+    .tab-btn {
+      border: none; background: none; padding: 12px 24px;
+      font: inherit; font-size: 15px; font-weight: 700;
+      color: var(--muted); cursor: pointer; position: relative;
+      transition: color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: var(--accent);
+    }
+    .tab-page { display: none; }
+    .tab-page.active { display: block; }
+
+    /* ── Shared card ── */
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(25,38,32,.06);
+    }
+
+    /* ── Ideas (same styles as original) ── */
+    .kicker { text-transform: uppercase; letter-spacing: .09em; color: var(--muted); font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+    .meta { color: var(--muted); font-size: 12px; }
+    .idea-card { transition: transform .12s; }
+    .idea-card:hover { transform: translateY(-2px); }
+    .idea-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .idea-title { font-size: 1.05rem; font-weight: 700; line-height: 1.35; flex: 1; }
+    .idea-title a { color: inherit; text-decoration: none; }
+    .idea-title a:hover { color: var(--accent); }
+    .badge {
+      border-radius: 999px; padding: 4px 12px; font-size: 11px;
+      font-weight: 700; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge.strong { background: var(--strong-bg); color: var(--strong-fg); }
+    .badge.moderate { background: var(--moderate-bg); color: var(--moderate-fg); }
+    .badge.weak { background: var(--weak-bg); color: var(--weak-fg); }
+    .score-total { font-size: 1.6rem; font-weight: 800; color: var(--accent); margin-right: 6px; }
+    .score-max { font-size: .85rem; color: var(--muted); }
+    .score-bar { display: flex; gap: 6px; margin: 10px 0; flex-wrap: wrap; }
+    .dim { flex: 1; min-width: 100px; background: #f4f4f2; border-radius: 10px; padding: 8px 10px; text-align: center; }
+    .dim-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+    .dim-val { font-size: 1.1rem; font-weight: 700; }
+    .idea-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 10px; font-size: 13px; color: var(--muted); }
+    .tag { background: #eef0f2; border-radius: 6px; padding: 3px 8px; font-size: 12px; font-weight: 600; }
+    .angle { margin-top: 10px; padding: 10px 14px; background: #f9f7f4; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 13.5px; line-height: 1.5; color: #3a4a42; }
+    .date-btn {
+      border: 1px solid var(--line); border-radius: 8px; padding: 6px 14px;
+      font: inherit; font-size: 13px; font-weight: 600;
+      color: var(--muted); background: var(--card); cursor: pointer; transition: all .12s;
+    }
+    .date-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .date-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .section-label { font-size: 14px; font-weight: 700; color: var(--accent); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+
+    /* ── Drafts list ── */
+    .draft-card { cursor: pointer; transition: transform .12s; }
+    .draft-card:hover { transform: translateY(-2px); }
+    .draft-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .draft-title { font-size: 1.1rem; font-weight: 700; flex: 1; }
+    .status-badge {
+      border-radius: 999px; padding: 4px 14px; font-size: 11px; font-weight: 700; white-space: nowrap;
+    }
+    .status-badge.draft { background: var(--draft-bg); color: var(--draft-fg); }
+    .status-badge.review { background: var(--review-bg); color: var(--review-fg); }
+    .status-badge.approved { background: var(--approved-bg); color: var(--approved-fg); }
+    .status-badge.published { background: var(--published-bg); color: var(--published-fg); }
+    .draft-time { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .empty { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 15px; }
+
+    /* ── Draft editor ── */
+    #editorView { display: none; }
+    .editor-toolbar-custom {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
+    }
+    .editor-toolbar-custom input {
+      flex: 1; min-width: 200px; border: 1px solid var(--line); border-radius: 10px;
+      padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 700;
+    }
+    .editor-toolbar-custom input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .btn {
+      border: none; border-radius: 10px; padding: 10px 20px;
+      font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+      transition: all .12s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #256b50; }
+    .btn-secondary { background: #eef0f2; color: var(--ink); }
+    .btn-secondary:hover { background: #dde0e3; }
+    .btn-danger { background: #fce4ec; color: #c62828; }
+    .btn-danger:hover { background: #ef9a9a; }
+    .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .save-hint { font-size: 12px; color: var(--muted); margin-left: 8px; }
+    .status-select {
+      border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px;
+      font: inherit; font-size: 13px; font-weight: 600; background: var(--card);
+    }
+
+    /* ── Info panel (ideas) ── */
+    .info-panel {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+      padding: 18px 20px; margin-bottom: 18px; box-shadow: 0 8px 24px rgba(25,38,32,.06);
+    }
+    .info-panel-title { font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+    .info-panel-body { font-size: 13.5px; line-height: 1.6; color: #3a4a42; }
+
+    /* ── EasyMDE overrides ── */
+    .EasyMDEContainer .CodeMirror { border-radius: 12px; min-height: 400px; font-size: 15px; line-height: 1.7; }
+    .editor-toolbar { border-radius: 12px 12px 0 0; }
+
+    @media (max-width: 600px) {
+      .score-bar { flex-direction: column; }
+      .dim { min-width: unset; }
+      .tab-btn { padding: 10px 16px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <!-- Tab bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('ideas')">选题推荐</button>
+      <button class="tab-btn" onclick="switchTab('drafts')">草稿箱</button>
+    </div>
+
+    <!-- ══════════ Ideas Tab ══════════ -->
+    <div id="ideasTab" class="tab-page active">
+      <header style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <p class="kicker">Writing Ideas</p>
+          <h1 style="font-size:1.8rem;">博客选题推荐</h1>
+        </div>
+        <div style="text-align:right">
+          <div id="genMeta" class="meta"></div>
+        </div>
+      </header>
+      <div class="info-panel">
+        <div class="info-panel-title">看到想写的选题？</div>
+        <div class="info-panel-body">
+          通过 mailbox 告诉 Tom-Blogs-Manager，请包含以下信息：<br/>
+          <b>1. 选哪个：</b>选题标题或链接<br/>
+          <b>2. 你的角度：</b>你想从什么视角切入？强调什么？<br/>
+          <b>3. 你的经历：</b>你在这个话题上有什么亲身经历或实践？<br/>
+          <b>4. 核心观点：</b>你最想传达的一两个判断是什么？<br/>
+          <span style="color:var(--muted);font-size:12px;">提供的信息越具体，写出来的文章越像你。</span>
+        </div>
+      </div>
+      <div id="dateFilter" style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;"></div>
+      <div id="ideas"></div>
+    </div>
+
+    <!-- ══════════ Drafts Tab ══════════ -->
+    <div id="draftsTab" class="tab-page">
+      <!-- Drafts list view -->
+      <div id="draftsListView">
+        <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <h1 style="font-size:1.8rem;">草稿箱</h1>
+          <div class="meta" id="draftCount"></div>
+        </header>
+        <div id="draftsList"></div>
+      </div>
+
+      <!-- Draft editor view -->
+      <div id="editorView">
+        <div class="editor-toolbar-custom">
+          <button class="btn btn-secondary" onclick="backToList()">&larr; 返回列表</button>
+          <div class="btn-group">
+            <select id="statusSelect" class="status-select" onchange="updateStatus()">
+              <option value="draft">草稿中</option>
+              <option value="review">待审阅</option>
+              <option value="approved">已通过</option>
+              <option value="published">已发布</option>
+            </select>
+            <button class="btn btn-primary" onclick="saveDraft()">保存</button>
+            <button class="btn btn-danger" onclick="deleteDraft()">删除</button>
+          </div>
+        </div>
+        <input type="text" id="draftTitle" placeholder="文章标题" style="width:100%;margin-bottom:14px;" />
+        <div id="draftMeta" class="draft-time" style="margin-bottom:12px;"></div>
+        <textarea id="draftEditor"></textarea>
+        <div id="saveStatus" class="save-hint"></div>
+      </div>
+    </div>
+  </main>
+
+<script>
+// ── Tab switching ──
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', (tab === 'ideas' && i === 0) || (tab === 'drafts' && i === 1));
+  });
+  document.getElementById('ideasTab').classList.toggle('active', tab === 'ideas');
+  document.getElementById('draftsTab').classList.toggle('active', tab === 'drafts');
+  if (tab === 'drafts') { loadDrafts(); showList(); }
+  if (tab === 'ideas') { loadIdeas(); }
+  history.replaceState(null, '', tab === 'ideas' ? '/' : '#drafts');
+}
+
+// ── IDEAS ──────────────────────────────────────────────────────
+
+const DIM_LABELS = {
+  audience_reach: '受众覆盖', distribution_potential: '传播潜力',
+  author_differentiation: '作者独特性', timeliness: '时效性', series_potential: '系列化',
+};
+const REC_LABELS = { strong: '强烈推荐', moderate: '值得考虑', weak: '优先级低' };
+
+let allData = null, activeDate = 'all';
+
+function renderIdea(idea) {
+  const s = idea.scores;
+  const dims = Object.entries(DIM_LABELS).map(([k, label]) => {
+    const val = s[k] || 0;
+    const color = val >= 4 ? '#186246' : val >= 3 ? '#856404' : '#6c757d';
+    return `<div class="dim"><div class="dim-label">${label}</div><div class="dim-val" style="color:${color}">${val}</div></div>`;
+  }).join('');
+  return `
+    <div class="card idea-card">
+      <div class="idea-header">
+        <div class="idea-title"><a href="${idea.url}" target="_blank">${idea.title}</a></div>
+        <span class="badge ${idea.recommendation}">${REC_LABELS[idea.recommendation] || idea.recommendation}</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="score-total">${s.total}</span><span class="score-max">/ 25</span>
+        <span style="font-size:12px;color:var(--muted)">${idea.date || ''}</span>
+      </div>
+      <div class="score-bar">${dims}</div>
+      <div class="angle">${idea.suggested_angle}</div>
+      <div class="idea-meta">
+        <span class="tag">${idea.content_line}</span>
+        <span>来源: ${idea.source}</span>
+      </div>
+    </div>`;
+}
+
+function renderDateFilter(dates) {
+  const f = document.getElementById('dateFilter');
+  let h = `<button class="date-btn ${activeDate==='all'?'active':''}" onclick="setDate('all')">全部</button>`;
+  for (const d of dates) h += `<button class="date-btn ${activeDate===d?'active':''}" onclick="setDate('${d}')">${d}</button>`;
+  f.innerHTML = h;
+}
+
+function renderIdeas(ideas) {
+  const root = document.getElementById('ideas');
+  if (!ideas || !ideas.length) { root.innerHTML = '<div class="empty">该日期暂无选题推荐</div>'; return; }
+  const groups = { strong: [], moderate: [], weak: [] };
+  ideas.forEach(i => (groups[i.recommendation] || groups.weak).push(i));
+  let h = '';
+  if (groups.strong.length) { h += '<div class="section-label">强烈推荐</div>' + groups.strong.map(renderIdea).join(''); }
+  if (groups.moderate.length) { h += '<div class="section-label">值得考虑</div>' + groups.moderate.map(renderIdea).join(''); }
+  if (groups.weak.length) { h += '<div class="section-label">优先级低</div>' + groups.weak.map(renderIdea).join(''); }
+  root.innerHTML = h;
+}
+
+function setDate(d) {
+  activeDate = d;
+  if (!allData) return;
+  renderDateFilter(allData.dates || []);
+  renderIdeas(activeDate === 'all' ? allData.ideas : allData.ideas.filter(i => i.date === activeDate));
+}
+
+async function loadIdeas() {
+  try {
+    const resp = await fetch('/api/ideas');
+    if (!resp.ok) throw new Error();
+    allData = await resp.json();
+    renderDateFilter(allData.dates || []);
+    renderIdeas(allData.ideas || []);
+    document.getElementById('genMeta').textContent = `更新时间: ${allData.generated_at || '未知'} | 保留最近7天`;
+  } catch (e) {
+    document.getElementById('ideas').innerHTML = '<div class="empty">加载失败</div>';
+  }
+}
+
+// ── DRAFTS ─────────────────────────────────────────────────────
+
+const STATUS_LABELS = { draft: '草稿中', review: '待审阅', approved: '已通过', published: '已发布' };
+let currentDraftId = null;
+let easyMDE = null;
+
+function showList() {
+  document.getElementById('draftsListView').style.display = '';
+  document.getElementById('editorView').style.display = 'none';
+  currentDraftId = null;
+}
+
+function showEditor() {
+  document.getElementById('draftsListView').style.display = 'none';
+  document.getElementById('editorView').style.display = '';
+}
+
+async function loadDrafts() {
+  try {
+    const resp = await fetch('/api/drafts');
+    const data = await resp.json();
+    const drafts = data.drafts || [];
+    document.getElementById('draftCount').textContent = `共 ${drafts.length} 篇草稿`;
+    if (!drafts.length) {
+      document.getElementById('draftsList').innerHTML = '<div class="empty">暂无草稿<br/><span style="font-size:13px;color:var(--muted)">Tom-Blogs-Manager 写完文章后会出现在这里</span></div>';
+      return;
+    }
+    document.getElementById('draftsList').innerHTML = drafts.map(d => `
+      <div class="card draft-card" onclick="openDraft('${d.id}')">
+        <div class="draft-header">
+          <div class="draft-title">${d.title}</div>
+          <span class="status-badge ${d.status}">${STATUS_LABELS[d.status] || d.status}</span>
+        </div>
+        <div class="draft-time">创建: ${fmtTime(d.created_at)} &nbsp;|&nbsp; 更新: ${fmtTime(d.updated_at)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    document.getElementById('draftsList').innerHTML = '<div class="empty">加载失败</div>';
+  }
+}
+
+function fmtTime(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+}
+
+async function openDraft(id) {
+  try {
+    const resp = await fetch(`/api/drafts/${id}`);
+    const draft = await resp.json();
+    currentDraftId = id;
+    document.getElementById('draftTitle').value = draft.title;
+    document.getElementById('statusSelect').value = draft.status;
+    document.getElementById('draftMeta').textContent = `创建: ${fmtTime(draft.created_at)} | 更新: ${fmtTime(draft.updated_at)}`;
+    document.getElementById('saveStatus').textContent = '';
+    showEditor();
+    // Init or reset EasyMDE
+    if (easyMDE) { easyMDE.toTextArea(); easyMDE = null; }
+    easyMDE = new EasyMDE({
+      element: document.getElementById('draftEditor'),
+      initialValue: draft.content || '',
+      spellChecker: false,
+      autofocus: true,
+      minHeight: '400px',
+      placeholder: '在此编辑文章内容 (Markdown)...',
+      status: ['lines', 'words'],
+      toolbar: [
+        'bold', 'italic', 'heading', '|',
+        'quote', 'unordered-list', 'ordered-list', '|',
+        'link', 'image', 'code', '|',
+        'preview', 'side-by-side', 'fullscreen', '|',
+        'guide'
+      ],
+      renderingConfig: { markedOptions: { breaks: true } },
+    });
+  } catch (e) {
+    alert('打开草稿失败');
+  }
+}
+
+async function saveDraft() {
+  if (!currentDraftId || !easyMDE) return;
+  const body = {
+    title: document.getElementById('draftTitle').value,
+    content: easyMDE.value(),
+    status: document.getElementById('statusSelect').value,
+  };
+  try {
+    const resp = await fetch(`/api/drafts/${currentDraftId}`, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (resp.ok) {
+      const meta = await resp.json();
+      document.getElementById('draftMeta').textContent = `创建: ${fmtTime(meta.created_at)} | 更新: ${fmtTime(meta.updated_at)}`;
+      document.getElementById('saveStatus').textContent = '已保存 ✓';
+      setTimeout(() => document.getElementById('saveStatus').textContent = '', 2000);
+    }
+  } catch (e) {
+    document.getElementById('saveStatus').textContent = '保存失败';
+  }
+}
+
+async function updateStatus() {
+  if (!currentDraftId) return;
+  await saveDraft();
+}
+
+async function deleteDraft() {
+  if (!currentDraftId) return;
+  if (!confirm('确定删除这篇草稿？')) return;
+  try {
+    await fetch(`/api/drafts/${currentDraftId}`, { method: 'DELETE' });
+    backToList();
+  } catch (e) { alert('删除失败'); }
+}
+
+function backToList() {
+  if (easyMDE) { easyMDE.toTextArea(); easyMDE = null; }
+  showList();
+  loadDrafts();
+}
+
+// ── Init ──
+if (location.hash === '#drafts') { switchTab('drafts'); } else { loadIdeas(); }
+</script>
+</body>
+</html>
