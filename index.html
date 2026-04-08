@@ -73,6 +73,17 @@
       text-align: center; padding: 60px 20px;
       color: var(--muted); font-size: 15px;
     }
+    .date-btn {
+      border: 1px solid var(--line); border-radius: 8px; padding: 6px 14px;
+      font: inherit; font-size: 13px; font-weight: 600;
+      color: var(--muted); background: var(--card); cursor: pointer;
+      transition: all .12s;
+    }
+    .date-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .date-btn.active {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .idea-date { font-size: 12px; color: var(--muted); }
     .section-label {
       font-size: 14px; font-weight: 700; color: var(--accent);
       margin: 20px 0 10px; padding-bottom: 6px;
@@ -95,6 +106,7 @@
         <div id="genMeta" class="meta"></div>
       </div>
     </header>
+    <div id="dateFilter" style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;"></div>
     <div id="ideas"></div>
   </main>
 <script>
@@ -106,6 +118,9 @@ const DIM_LABELS = {
   series_potential: '系列化',
 };
 const REC_LABELS = { strong: '强烈推荐', moderate: '值得考虑', weak: '优先级低' };
+
+let allData = null;
+let activeDate = 'all';
 
 function renderIdea(idea) {
   const s = idea.scores;
@@ -122,8 +137,9 @@ function renderIdea(idea) {
         <div class="idea-title"><a href="${idea.url}" target="_blank">${idea.title}</a></div>
         <span class="badge ${rec}">${REC_LABELS[rec] || rec}</span>
       </div>
-      <div style="display:flex;align-items:baseline;gap:4px">
+      <div style="display:flex;align-items:baseline;gap:8px">
         <span class="score-total">${s.total}</span><span class="score-max">/ 25</span>
+        <span class="idea-date">${idea.date || ''}</span>
       </div>
       <div class="score-bar">${dims}</div>
       <div class="angle">${idea.suggested_angle}</div>
@@ -134,38 +150,65 @@ function renderIdea(idea) {
     </div>`;
 }
 
-async function loadIdeas() {
+function renderDateFilter(dates) {
+  const filter = document.getElementById('dateFilter');
+  let html = `<button class="date-btn ${activeDate === 'all' ? 'active' : ''}" onclick="setDate('all')">全部</button>`;
+  for (const d of dates) {
+    html += `<button class="date-btn ${activeDate === d ? 'active' : ''}" onclick="setDate('${d}')">${d}</button>`;
+  }
+  filter.innerHTML = html;
+}
+
+function renderIdeas(ideas) {
   const root = document.getElementById('ideas');
+  if (!ideas || ideas.length === 0) {
+    root.innerHTML = '<div class="empty">该日期暂无选题推荐</div>';
+    return;
+  }
+  const strong = ideas.filter(i => i.recommendation === 'strong');
+  const moderate = ideas.filter(i => i.recommendation === 'moderate');
+  const weak = ideas.filter(i => i.recommendation === 'weak');
+
+  let html = '';
+  if (strong.length) {
+    html += '<div class="section-label">强烈推荐</div>';
+    html += strong.map(renderIdea).join('');
+  }
+  if (moderate.length) {
+    html += '<div class="section-label">值得考虑</div>';
+    html += moderate.map(renderIdea).join('');
+  }
+  if (weak.length) {
+    html += '<div class="section-label">优先级低</div>';
+    html += weak.map(renderIdea).join('');
+  }
+  root.innerHTML = html;
+}
+
+function setDate(d) {
+  activeDate = d;
+  if (!allData) return;
+  renderDateFilter(allData.dates || []);
+  const filtered = activeDate === 'all'
+    ? allData.ideas
+    : allData.ideas.filter(i => i.date === activeDate);
+  renderIdeas(filtered);
+}
+
+async function loadIdeas() {
   const meta = document.getElementById('genMeta');
   try {
     const resp = await fetch('data/ideas.json');
     if (!resp.ok) throw new Error('No data');
-    const data = await resp.json();
-    if (!data.ideas || data.ideas.length === 0) {
-      root.innerHTML = '<div class="empty">暂无选题推荐</div>';
-      return;
-    }
-    const strong = data.ideas.filter(i => i.recommendation === 'strong');
-    const moderate = data.ideas.filter(i => i.recommendation === 'moderate');
-    const weak = data.ideas.filter(i => i.recommendation === 'weak');
-
-    let html = '';
-    if (strong.length) {
-      html += '<div class="section-label">强烈推荐</div>';
-      html += strong.map(renderIdea).join('');
-    }
-    if (moderate.length) {
-      html += '<div class="section-label">值得考虑</div>';
-      html += moderate.map(renderIdea).join('');
-    }
-    if (weak.length) {
-      html += '<div class="section-label">优先级低</div>';
-      html += weak.map(renderIdea).join('');
-    }
-    root.innerHTML = html;
-    meta.textContent = `更新时间: ${data.generated_at || '未知'}`;
+    allData = await resp.json();
+    renderDateFilter(allData.dates || []);
+    const filtered = activeDate === 'all'
+      ? allData.ideas
+      : allData.ideas.filter(i => i.date === activeDate);
+    renderIdeas(filtered);
+    meta.textContent = `更新时间: ${allData.generated_at || '未知'} | 保留最近7天`;
   } catch (e) {
-    root.innerHTML = '<div class="empty">加载失败，请稍后重试</div>';
+    document.getElementById('ideas').innerHTML = '<div class="empty">加载失败，请稍后重试</div>';
   }
 }
 

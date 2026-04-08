@@ -177,33 +177,82 @@ def find_latest_digest() -> Path | None:
     return dirs[0] if dirs else None
 
 
+RETENTION_DAYS = 7
+
+
 def generate_ideas(output_path: str | Path | None = None) -> list[dict]:
-    """Main entry: find latest digest, score, and optionally save."""
+    """Main entry: find latest digest, score, merge with history, prune >7 days."""
     digest_dir = find_latest_digest()
     if not digest_dir:
         return []
 
+    now = datetime.now(timezone.utc)
+    today = now.strftime("%Y-%m-%d")
     scored = score_digest(digest_dir)
 
+    # Add date to each idea
+    for idea in scored:
+        idea["date"] = today
+
+    # Load existing data and merge
+    out = Path(output_path) if output_path else None
+    existing_ideas = []
+    existing_sources = set()
+    if out and out.exists():
+        with open(out, "r", encoding="utf-8") as f:
+            old_data = json.load(f)
+        existing_ideas = old_data.get("ideas", [])
+        existing_sources = {i.get("digest_source") for i in old_data.get("daily_sources", [])}
+
+    # Deduplicate by URL — keep newer version
+    seen_urls = set()
+    merged = []
+    for idea in scored:
+        seen_urls.add(idea["url"])
+        merged.append(idea)
+    for idea in existing_ideas:
+        if idea.get("url") not in seen_urls:
+            merged.append(idea)
+            seen_urls.add(idea["url"])
+
+    # Prune ideas older than RETENTION_DAYS
+    cutoff = (now - __import__("datetime").timedelta(days=RETENTION_DAYS)).strftime("%Y-%m-%d")
+    merged = [i for i in merged if i.get("date", "2000-01-01") >= cutoff]
+
+    # Sort by date (newest first), then by score
+    merged.sort(key=lambda x: (-x.get("date", "").replace("-", "").ljust(8, "0").__len__(),
+                                 x.get("date", ""),
+                                 -x["scores"]["total"]))
+    # Actually sort properly: date desc, then score desc
+    merged.sort(key=lambda x: (-int(x.get("date", "2000-01-01").replace("-", "")),
+                                -x["scores"]["total"]))
+
+    # Collect unique dates for the filter
+    dates = sorted(set(i.get("date", "") for i in merged), reverse=True)
+
+    # Track daily sources
+    daily_sources_list = list(existing_sources | {str(digest_dir)})
+
     result = {
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "digest_source": str(digest_dir),
-        "ideas": scored,
+        "dates": dates,
+        "daily_sources": [{"digest_source": s} for s in daily_sources_list[-20:]],
+        "ideas": merged,
     }
 
-    if output_path:
-        out = Path(output_path)
+    if out:
         out.parent.mkdir(parents=True, exist_ok=True)
         with open(out, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
 
-    return scored
+    return merged
 
 
 if __name__ == "__main__":
     ideas = generate_ideas("data/ideas.json")
     for idea in ideas:
         s = idea["scores"]
-        print(f"[{s['total']}/25] [{idea['recommendation']}] {idea['title']}")
+        print(f"[{s['total']}/25] [{idea['recommendation']}] [{idea.get('date','')}] {idea['title']}")
         print(f"  内容线: {idea['content_line']} | 角度: {idea['suggested_angle'][:50]}...")
         print()
