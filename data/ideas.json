@@ -1,49 +1,26 @@
 {
-  "generated_at": "2026-04-08T02:27:49Z",
-  "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z",
+  "generated_at": "2026-04-08T02:30:05Z",
+  "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z",
   "dates": [
-    "2026-04-08"
+    "2026-04-08",
+    "2026-04-06",
+    "2026-04-04"
   ],
   "daily_sources": [
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z"
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
     }
   ],
   "ideas": [
-    {
-      "title": "Issue: Claude Code is unusable for complex engineering tasks with Feb updates",
-      "url": "https://github.com/anthropics/claude-code/issues/42796",
-      "source": "hacker-news",
-      "scores": {
-        "audience_reach": 3,
-        "distribution_potential": 5,
-        "author_differentiation": 5,
-        "timeliness": 3,
-        "series_potential": 2,
-        "total": 18
-      },
-      "content_line": "技术深度",
-      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
-      "recommendation": "moderate",
-      "date": "2026-04-08"
-    },
-    {
-      "title": "Launch HN: Freestyle – Sandboxes for Coding Agents",
-      "url": "https://www.freestyle.sh/",
-      "source": "hacker-news",
-      "scores": {
-        "audience_reach": 3,
-        "distribution_potential": 4,
-        "author_differentiation": 4,
-        "timeliness": 3,
-        "series_potential": 2,
-        "total": 16
-      },
-      "content_line": "技术深度",
-      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
-      "recommendation": "moderate",
-      "date": "2026-04-08"
-    },
     {
       "title": "abhigyanpatwari/GitNexus",
       "url": "https://github.com/abhigyanpatwari/GitNexus",
@@ -62,8 +39,127 @@
       "date": "2026-04-08"
     },
     {
-      "title": "OpenBrowser-AI",
-      "url": "https://www.producthunt.com/products/openbrowser-ai-59-less-100-accurate",
+      "title": "LlamaAgents Builder: From Prompt to Deployed AI Agent in Minutes",
+      "url": "https://machinelearningmastery.com/llamaagents-builder-from-prompt-to-deployed-ai-agent-in-minutes/",
+      "source": "machinelearningmastery",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 15
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "Together AI Brings NVIDIA Nemotron 3 to Developers on Day 0",
+      "url": "https://www.together.ai/blog/nvidia-nemotron-3-super",
+      "source": "together-blog",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+      "url": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+      "source": "venturebeat-ai",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "行业洞察",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "Boomi calls it “data activation” and says it’s the missing step in every AI deployment",
+      "url": "https://www.artificialintelligence-news.com/news/boomi-agentic-ai-data-activation-missing-step/",
+      "source": "ai-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "Anthropic tells OpenClaw users to pay up",
+      "url": "https://www.therundown.ai/p/anthropic-tells-openclaw-users-to-pay-up",
+      "source": "rundown-ai",
+      "scores": {
+        "audience_reach": 4,
+        "distribution_potential": 5,
+        "author_differentiation": 5,
+        "timeliness": 5,
+        "series_potential": 3,
+        "total": 22
+      },
+      "content_line": "行业洞察",
+      "suggested_angle": "作为OpenClaw的真实用户，从亲历者视角分析这次定价变化对独立开发者意味着什么，延伸到AI基础设施的商业模式演变",
+      "recommendation": "strong",
+      "date": "2026-04-06"
+    },
+    {
+      "title": "AI just made the billion-dollar solo founder real",
+      "url": "https://www.therundown.ai/p/ai-just-made-the-billion-dollar-solo-founder-real",
+      "source": "rundown-ai",
+      "scores": {
+        "audience_reach": 5,
+        "distribution_potential": 5,
+        "author_differentiation": 3,
+        "timeliness": 3,
+        "series_potential": 4,
+        "total": 20
+      },
+      "content_line": "行业洞察",
+      "suggested_angle": "从'One Man, Many Agents'的实践出发，用自己构建AI员工体系的经验，讨论AI如何改变个人的能力边界",
+      "recommendation": "strong",
+      "date": "2026-04-06"
+    },
+    {
+      "title": "google-ai-edge/gallery",
+      "url": "https://github.com/google-ai-edge/gallery",
+      "source": "github-trending",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 1,
+        "timeliness": 5,
+        "series_potential": 2,
+        "total": 12
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "代码级拆解 + 对自建系统的参考价值分析",
+      "recommendation": "weak",
+      "date": "2026-04-06"
+    },
+    {
+      "title": "PixVerse V6",
+      "url": "https://www.producthunt.com/products/pixverse",
       "source": "product-hunt",
       "scores": {
         "audience_reach": 2,
@@ -76,24 +172,24 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-08"
+      "date": "2026-04-06"
     },
     {
-      "title": "tobi/qmd",
-      "url": "https://github.com/tobi/qmd",
+      "title": "Blaizzy/mlx-vlm",
+      "url": "https://github.com/Blaizzy/mlx-vlm",
       "source": "github-trending",
       "scores": {
-        "audience_reach": 3,
+        "audience_reach": 2,
         "distribution_potential": 2,
-        "author_differentiation": 1,
+        "author_differentiation": 2,
         "timeliness": 3,
         "series_potential": 2,
         "total": 11
       },
-      "content_line": "实用工具",
+      "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-08"
+      "date": "2026-04-04"
     }
   ]
 }
