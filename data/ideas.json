@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-08T02:30:05Z",
-  "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z",
+  "generated_at": "2026-04-08T03:22:18Z",
+  "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z",
   "dates": [
     "2026-04-08",
     "2026-04-06",
@@ -8,19 +8,56 @@
   ],
   "daily_sources": [
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
     },
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
     },
     {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
     },
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z"
     }
   ],
   "ideas": [
+    {
+      "title": "Issue: Claude Code is unusable for complex engineering tasks with Feb updates",
+      "url": "https://github.com/anthropics/claude-code/issues/42796",
+      "source": "hacker-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 5,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 18
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "Launch HN: Freestyle – Sandboxes for Coding Agents",
+      "url": "https://www.freestyle.sh/",
+      "source": "hacker-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 4,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 16
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-08"
+    },
     {
       "title": "abhigyanpatwari/GitNexus",
       "url": "https://github.com/abhigyanpatwari/GitNexus",
@@ -103,6 +140,40 @@
       },
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "OpenBrowser-AI",
+      "url": "https://www.producthunt.com/products/openbrowser-ai-59-less-100-accurate",
+      "source": "product-hunt",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 3,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 12
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-08"
+    },
+    {
+      "title": "tobi/qmd",
+      "url": "https://github.com/tobi/qmd",
+      "source": "github-trending",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 1,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 11
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
       "date": "2026-04-08"
     },
