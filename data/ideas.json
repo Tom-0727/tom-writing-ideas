@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-08T03:22:18Z",
+  "generated_at": "2026-04-08T12:31:11Z",
   "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z",
   "dates": [
     "2026-04-08",
@@ -8,19 +8,19 @@
   ],
   "daily_sources": [
     {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
+    },
+    {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
     },
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
-    },
-    {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z"
     },
     {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
     },
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z"
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
     }
   ],
   "ideas": [
