@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T11:24:21Z",
+  "generated_at": "2026-04-12T13:16:36Z",
   "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260412T073416Z",
   "dates": [
     "2026-04-12",
@@ -9,25 +9,161 @@
   ],
   "daily_sources": [
     {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260412T073416Z"
-    },
-    {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
-    },
-    {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
-    },
-    {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
     },
     {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
     },
     {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260412T073416Z"
+    },
+    {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
     }
   ],
   "ideas": [
+    {
+      "title": "Continual learning for AI agents",
+      "url": "https://blog.langchain.com/continual-learning-for-ai-agents/",
+      "source": "langchain-blog",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 5,
+        "total": 18
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从正在构建Long-Run Agent的实践出发，分析Agent持续学习的真实挑战和可行路径，对比理论方案与工程落地的差距",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Architecture and Orchestration of Memory Systems in AI Agents",
+      "url": "https://www.analyticsvidhya.com/blog/2026/04/memory-systems-in-ai-agents/",
+      "source": "analyticsvidhya",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 5,
+        "total": 18
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合自建Agent记忆系统的经验，拆解Agent记忆的工程实现、瓶颈和设计取舍",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "The future of managing agents at scale: AWS Agent Registry now in preview",
+      "url": "https://aws.amazon.com/blogs/machine-learning/the-future-of-managing-agents-at-scale-aws-agent-registry-now-in-preview/",
+      "source": "aws-ml-blog",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 4,
+        "series_potential": 4,
+        "total": 18
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "The creator of Claude Code just revealed his workflow, and developers are losing their minds",
+      "url": "https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are",
+      "source": "venturebeat-ai",
+      "scores": {
+        "audience_reach": 5,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 4,
+        "series_potential": 2,
+        "total": 18
+      },
+      "content_line": "行业洞察",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "coleam00/Archon",
+      "url": "https://github.com/coleam00/Archon",
+      "source": "github-trending",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 4,
+        "total": 17
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "对比分析不同Agent Harness的设计理念，结合自建Long-Run Agent Harness的经验给出工程判断",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Maia 200: The AI accelerator built for inference",
+      "url": "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/",
+      "source": "microsoft-ai-blog",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 5,
+        "total": 16
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合自建Agent记忆系统的经验，拆解Agent记忆的工程实现、瓶颈和设计取舍",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "New Anthropic Tool Speeds up AI Agent Development for Enterprises",
+      "url": "https://aibusiness.com/agentic-ai/new-anthropic-tool-speeds-ai-agent-development-enterprises",
+      "source": "ai-business",
+      "scores": {
+        "audience_reach": 4,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 16
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "How We Broke Top AI Agent Benchmarks: And What Comes Next",
+      "url": "https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/",
+      "source": "hacker-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 4,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 16
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
     {
       "title": "LlamaAgents Builder: From Prompt to Deployed AI Agent in Minutes",
       "url": "https://machinelearningmastery.com/llamaagents-builder-from-prompt-to-deployed-ai-agent-in-minutes/",
@@ -46,8 +182,25 @@
       "date": "2026-04-12"
     },
     {
-      "title": "coleam00/Archon",
-      "url": "https://github.com/coleam00/Archon",
+      "title": "Microsoft open-source toolkit secures AI agents at runtime",
+      "url": "https://www.artificialintelligence-news.com/news/microsoft-open-source-toolkit-secures-ai-agents-at-runtime/",
+      "source": "ai-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 15
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "moderate",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "shanraisshan/claude-code-best-practice",
+      "url": "https://github.com/shanraisshan/claude-code-best-practice",
       "source": "github-trending",
       "scores": {
         "audience_reach": 3,
@@ -97,6 +250,193 @@
       "date": "2026-04-12"
     },
     {
+      "title": "Meta Superintelligence Lab Releases Muse Spark: A Multimodal Reasoning Model With Thought Compression and Parallel Agents",
+      "url": "https://www.marktechpost.com/2026/04/09/meta-superintelligence-lab-releases-muse-spark-a-multimodal-reasoning-model-with-thought-compression-and-parallel-agents/",
+      "source": "marktechpost-ai",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "From RTX to Spark: NVIDIA Accelerates Gemma 4 for Local Agentic AI",
+      "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-open-models-google-gemma-4/",
+      "source": "nvidia-blog",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Which Agent Causes Task Failures and When?Researchers from PSU and Duke explores automated failure attribution of LLM Multi-Agent Systems",
+      "url": "https://syncedreview.com/2025/08/14/which-agent-causes-task-failures-and-whenresearchers-from-psu-and-duke-explores-automated-failure-attribution-of-llm-multi-agent-systems/",
+      "source": "synced",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Boomi calls it “data activation” and says it’s the missing step in every AI deployment",
+      "url": "https://www.artificialintelligence-news.com/news/boomi-agentic-ai-data-activation-missing-step/",
+      "source": "ai-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Speaking of Voxtral",
+      "url": "https://mistral.ai/news/voxtral-tts",
+      "source": "mistral-news",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Is Anthropic limiting the release of Mythos to protect the internet — or Anthropic?",
+      "url": "https://techcrunch.com/2026/04/09/is-anthropic-limiting-the-release-of-mythos-to-protect-the-internet-or-anthropic/",
+      "source": "techcrunch-ai",
+      "scores": {
+        "audience_reach": 4,
+        "distribution_potential": 2,
+        "author_differentiation": 3,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Deepgram speech-to-text and voice models now available natively on Together AI",
+      "url": "https://www.together.ai/blog/deepgram-speech-to-text-and-voice-models-now-available-natively-on-together-ai",
+      "source": "together-blog",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 4,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "How to Build a Secure Local-First Agent Runtime with OpenClaw Gateway, Skills, and Controlled Tool Execution",
+      "url": "https://www.marktechpost.com/2026/04/11/how-to-build-a-secure-local-first-agent-runtime-with-openclaw-gateway-skills-and-controlled-tool-execution/",
+      "source": "marktechpost-ai",
+      "scores": {
+        "audience_reach": 4,
+        "distribution_potential": 2,
+        "author_differentiation": 5,
+        "timeliness": 1,
+        "series_potential": 2,
+        "total": 14
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Meta Superintelligence Labs ships its first model",
+      "url": "https://www.therundown.ai/p/meta-superintelligence-labs-ships-its-first-model",
+      "source": "rundown-ai",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 4,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 13
+      },
+      "content_line": "实用工具",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "A Dream of Spring for Open-Weight LLMs: 10 Architectures from Jan-Feb 2026",
+      "url": "https://magazine.sebastianraschka.com/p/a-dream-of-spring-for-open-weight",
+      "source": "sebastian-raschka",
+      "scores": {
+        "audience_reach": 3,
+        "distribution_potential": 2,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 3,
+        "total": 13
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Nicelydone MCP",
+      "url": "https://www.producthunt.com/products/nicely-done",
+      "source": "product-hunt",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 3,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 12
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
       "title": "40 Generative AI Interview Questions That Actually Get Asked in 2026 (With Answers)",
       "url": "https://towardsai.net/p/machine-learning/40-generative-ai-interview-questions-that-actually-get-asked-in-2026-with-answers",
       "source": "towards-ai",
@@ -107,6 +447,91 @@
         "timeliness": 1,
         "series_potential": 2,
         "total": 11
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Ask a Techspert: What’s a world model?",
+      "url": "https://blog.google/company-news/inside-google/googlers/ask-a-techspert/what-is-a-world-model-project-genie/",
+      "source": "google-deepmind-blog",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 11
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "AGI Is Not Multimodal",
+      "url": "https://thegradient.pub/agi-is-not-multimodal/",
+      "source": "thegradient",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 2,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 11
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Scaling and Optimizing Frontier Model Training",
+      "url": "https://fireworks.ai/blog/scaling-optimizing-frontier-model-training",
+      "source": "fireworks-blog",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 1,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 10
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "Recraft V4: image generation with design taste",
+      "url": "https://replicate.com/blog/recraft-v4",
+      "source": "replicate-blog",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 1,
+        "timeliness": 3,
+        "series_potential": 2,
+        "total": 10
+      },
+      "content_line": "技术深度",
+      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
+      "recommendation": "weak",
+      "date": "2026-04-12"
+    },
+    {
+      "title": "LLMs Inside the Product: A Practical Field Guide",
+      "url": "https://groq.com/blog/llms-inside-the-product-a-practical-field-guide",
+      "source": "groq-blog",
+      "scores": {
+        "audience_reach": 2,
+        "distribution_potential": 2,
+        "author_differentiation": 2,
+        "timeliness": 1,
+        "series_potential": 2,
+        "total": 9
       },
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
@@ -202,23 +627,6 @@
       "title": "Together AI Brings NVIDIA Nemotron 3 to Developers on Day 0",
       "url": "https://www.together.ai/blog/nvidia-nemotron-3-super",
       "source": "together-blog",
-      "scores": {
-        "audience_reach": 3,
-        "distribution_potential": 2,
-        "author_differentiation": 4,
-        "timeliness": 3,
-        "series_potential": 2,
-        "total": 14
-      },
-      "content_line": "技术深度",
-      "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
-      "recommendation": "weak",
-      "date": "2026-04-08"
-    },
-    {
-      "title": "Boomi calls it “data activation” and says it’s the missing step in every AI deployment",
-      "url": "https://www.artificialintelligence-news.com/news/boomi-agentic-ai-data-activation-missing-step/",
-      "source": "ai-news",
       "scores": {
         "audience_reach": 3,
         "distribution_potential": 2,

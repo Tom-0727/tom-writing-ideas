@@ -15,6 +15,9 @@ AUTHOR_STRENGTHS = {
     "openclaw", "researcher", "skill", "skills", "workflow", "automation",
     "solo founder", "one man", "indie", "solopreneur",
     "llm application", "ai startup", "ai business",
+    "continual learning", "lifelong", "long-run", "long run",
+    "harness", "agent team", "agent registry",
+    "memory system", "agent memory", "episodic memory",
 }
 
 WEAK_DOMAINS = {
@@ -32,6 +35,8 @@ HIGH_VALUE_SIGNALS = {
     "claude code", "anthropic", "openclaw",
     "agent framework", "agent tool", "open source agent",
     "context engineering", "agent memory", "agent learning",
+    "continual learning", "lifelong agent", "long-run agent",
+    "harness builder", "agent harness", "memory architecture",
 }
 
 
@@ -93,8 +98,12 @@ def score_item(item: dict) -> dict:
 
     # 5. Series Potential (1-5)
     series_score = 2
-    if any(kw in text for kw in ["solo founder", "ai workforce", "ai employee", "one man"]):
+    if any(kw in text for kw in ["continual learning", "lifelong", "memory system", "agent memory", "episodic"]):
+        series_score = 5  # core to Tom's ongoing work, highly serializable
+    elif any(kw in text for kw in ["solo founder", "ai workforce", "ai employee", "one man"]):
         series_score = 4  # can be serialized with personal practice updates
+    elif any(kw in text for kw in ["harness", "agent team", "agent registry"]):
+        series_score = 4  # directly related to Tom's architecture
     elif any(kw in text for kw in ["framework", "architecture", "platform"]):
         series_score = 3
     elif any(kw in text for kw in ["pricing", "pay up"]):
@@ -129,6 +138,12 @@ def score_item(item: dict) -> dict:
 def _suggest_angle(text: str, author_score: int) -> str:
     if "openclaw" in text and "pay" in text:
         return "作为OpenClaw的真实用户，从亲历者视角分析这次定价变化对独立开发者意味着什么，延伸到AI基础设施的商业模式演变"
+    if "continual learning" in text or "lifelong" in text:
+        return "从正在构建Long-Run Agent的实践出发，分析Agent持续学习的真实挑战和可行路径，对比理论方案与工程落地的差距"
+    if "memory system" in text or "memory architecture" in text or "episodic memory" in text:
+        return "结合自建Agent记忆系统的经验，拆解Agent记忆的工程实现、瓶颈和设计取舍"
+    if "harness" in text and ("agent" in text or "coding" in text):
+        return "对比分析不同Agent Harness的设计理念，结合自建Long-Run Agent Harness的经验给出工程判断"
     if "solo founder" in text or "one person" in text or "billion" in text:
         return "从'One Man, Many Agents'的实践出发，用自己构建AI员工体系的经验，讨论AI如何改变个人的能力边界"
     if author_score >= 4 and ("agent" in text or "claude" in text):
@@ -157,8 +172,9 @@ def score_digest(digest_path: str | Path) -> list[dict]:
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    shortlist = data.get("shortlist", [])
-    scored = [score_item(item) for item in shortlist]
+    # Use agent_rerank_frontier (broader pool) if available, fall back to shortlist
+    items = data.get("agent_rerank_frontier", []) or data.get("shortlist", [])
+    scored = [score_item(item) for item in items]
     scored.sort(key=lambda x: x["scores"]["total"], reverse=True)
     return scored
 
