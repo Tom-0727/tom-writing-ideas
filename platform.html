@@ -314,14 +314,14 @@ let currentDraftId = null;
 let easyMDE = null;
 
 function showList() {
-  document.getElementById('draftsListView').style.display = '';
+  document.getElementById('draftsListView').style.display = 'block';
   document.getElementById('editorView').style.display = 'none';
   currentDraftId = null;
 }
 
 function showEditor() {
   document.getElementById('draftsListView').style.display = 'none';
-  document.getElementById('editorView').style.display = '';
+  document.getElementById('editorView').style.display = 'block';
 }
 
 async function loadDrafts() {
