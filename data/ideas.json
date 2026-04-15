@@ -1,27 +1,26 @@
 {
-  "generated_at": "2026-04-12T13:16:36Z",
+  "generated_at": "2026-04-15T04:14:34Z",
   "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260412T073416Z",
   "dates": [
-    "2026-04-12",
+    "2026-04-15",
     "2026-04-09",
-    "2026-04-08",
-    "2026-04-06"
+    "2026-04-08"
   ],
   "daily_sources": [
-    {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
-    },
-    {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
-    },
-    {
-      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
-    },
     {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260412T073416Z"
     },
     {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T075907Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260404T213855Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260407T235928Z"
+    },
+    {
+      "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260408T021228Z"
     },
     {
       "digest_source": "/home/ubuntu/agents/ai-informer/Runtime/digests/20260406T161307Z"
@@ -43,7 +42,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从正在构建Long-Run Agent的实践出发，分析Agent持续学习的真实挑战和可行路径，对比理论方案与工程落地的差距",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Architecture and Orchestration of Memory Systems in AI Agents",
@@ -60,7 +59,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合自建Agent记忆系统的经验，拆解Agent记忆的工程实现、瓶颈和设计取舍",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "The future of managing agents at scale: AWS Agent Registry now in preview",
@@ -77,7 +76,7 @@
       "content_line": "实用工具",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "The creator of Claude Code just revealed his workflow, and developers are losing their minds",
@@ -94,7 +93,7 @@
       "content_line": "行业洞察",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "coleam00/Archon",
@@ -111,7 +110,7 @@
       "content_line": "实用工具",
       "suggested_angle": "对比分析不同Agent Harness的设计理念，结合自建Long-Run Agent Harness的经验给出工程判断",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Maia 200: The AI accelerator built for inference",
@@ -128,7 +127,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合自建Agent记忆系统的经验，拆解Agent记忆的工程实现、瓶颈和设计取舍",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "New Anthropic Tool Speeds up AI Agent Development for Enterprises",
@@ -145,7 +144,7 @@
       "content_line": "实用工具",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "How We Broke Top AI Agent Benchmarks: And What Comes Next",
@@ -162,7 +161,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "LlamaAgents Builder: From Prompt to Deployed AI Agent in Minutes",
@@ -179,7 +178,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Microsoft open-source toolkit secures AI agents at runtime",
@@ -196,7 +195,7 @@
       "content_line": "实用工具",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "shanraisshan/claude-code-best-practice",
@@ -213,7 +212,7 @@
       "content_line": "实用工具",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "moderate",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Small models also found the vulnerabilities that Mythos found",
@@ -230,7 +229,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
@@ -247,7 +246,7 @@
       "content_line": "行业洞察",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Meta Superintelligence Lab Releases Muse Spark: A Multimodal Reasoning Model With Thought Compression and Parallel Agents",
@@ -264,7 +263,7 @@
       "content_line": "实用工具",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "From RTX to Spark: NVIDIA Accelerates Gemma 4 for Local Agentic AI",
@@ -281,7 +280,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Which Agent Causes Task Failures and When?Researchers from PSU and Duke explores automated failure attribution of LLM Multi-Agent Systems",
@@ -298,7 +297,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Boomi calls it “data activation” and says it’s the missing step in every AI deployment",
@@ -315,7 +314,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Speaking of Voxtral",
@@ -332,7 +331,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Is Anthropic limiting the release of Mythos to protect the internet — or Anthropic?",
@@ -349,7 +348,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Deepgram speech-to-text and voice models now available natively on Together AI",
@@ -366,7 +365,7 @@
       "content_line": "技术深度",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "How to Build a Secure Local-First Agent Runtime with OpenClaw Gateway, Skills, and Controlled Tool Execution",
@@ -383,7 +382,7 @@
       "content_line": "实用工具",
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Meta Superintelligence Labs ships its first model",
@@ -400,7 +399,7 @@
       "content_line": "实用工具",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "A Dream of Spring for Open-Weight LLMs: 10 Architectures from Jan-Feb 2026",
@@ -417,7 +416,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Nicelydone MCP",
@@ -434,7 +433,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "40 Generative AI Interview Questions That Actually Get Asked in 2026 (With Answers)",
@@ -451,7 +450,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Ask a Techspert: What’s a world model?",
@@ -468,7 +467,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "AGI Is Not Multimodal",
@@ -485,7 +484,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Scaling and Optimizing Frontier Model Training",
@@ -502,7 +501,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Recraft V4: image generation with design taste",
@@ -519,7 +518,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "LLMs Inside the Product: A Practical Field Guide",
@@ -536,7 +535,7 @@
       "content_line": "技术深度",
       "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
       "recommendation": "weak",
-      "date": "2026-04-12"
+      "date": "2026-04-15"
     },
     {
       "title": "Issue: Claude Code is unusable for complex engineering tasks with Feb updates",
@@ -639,74 +638,6 @@
       "suggested_angle": "从工程实践角度分享一手体验和判断，突出独特洞察",
       "recommendation": "weak",
       "date": "2026-04-08"
-    },
-    {
-      "title": "Anthropic tells OpenClaw users to pay up",
-      "url": "https://www.therundown.ai/p/anthropic-tells-openclaw-users-to-pay-up",
-      "source": "rundown-ai",
-      "scores": {
-        "audience_reach": 4,
-        "distribution_potential": 5,
-        "author_differentiation": 5,
-        "timeliness": 5,
-        "series_potential": 3,
-        "total": 22
-      },
-      "content_line": "行业洞察",
-      "suggested_angle": "作为OpenClaw的真实用户，从亲历者视角分析这次定价变化对独立开发者意味着什么，延伸到AI基础设施的商业模式演变",
-      "recommendation": "strong",
-      "date": "2026-04-06"
-    },
-    {
-      "title": "AI just made the billion-dollar solo founder real",
-      "url": "https://www.therundown.ai/p/ai-just-made-the-billion-dollar-solo-founder-real",
-      "source": "rundown-ai",
-      "scores": {
-        "audience_reach": 5,
-        "distribution_potential": 5,
-        "author_differentiation": 3,
-        "timeliness": 3,
-        "series_potential": 4,
-        "total": 20
-      },
-      "content_line": "行业洞察",
-      "suggested_angle": "从'One Man, Many Agents'的实践出发，用自己构建AI员工体系的经验，讨论AI如何改变个人的能力边界",
-      "recommendation": "strong",
-      "date": "2026-04-06"
-    },
-    {
-      "title": "google-ai-edge/gallery",
-      "url": "https://github.com/google-ai-edge/gallery",
-      "source": "github-trending",
-      "scores": {
-        "audience_reach": 2,
-        "distribution_potential": 2,
-        "author_differentiation": 1,
-        "timeliness": 5,
-        "series_potential": 2,
-        "total": 12
-      },
-      "content_line": "技术深度",
-      "suggested_angle": "代码级拆解 + 对自建系统的参考价值分析",
-      "recommendation": "weak",
-      "date": "2026-04-06"
-    },
-    {
-      "title": "PixVerse V6",
-      "url": "https://www.producthunt.com/products/pixverse",
-      "source": "product-hunt",
-      "scores": {
-        "audience_reach": 2,
-        "distribution_potential": 3,
-        "author_differentiation": 2,
-        "timeliness": 3,
-        "series_potential": 2,
-        "total": 12
-      },
-      "content_line": "技术深度",
-      "suggested_angle": "结合行业趋势和个人视角，提供独特分析",
-      "recommendation": "weak",
-      "date": "2026-04-06"
     }
   ]
 }
